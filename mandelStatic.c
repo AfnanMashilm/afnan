@@ -87,7 +87,7 @@ int main(int argc, char **argv) {
 if (rank == 0) {
     int* global_buffer = (int*) malloc(WID * HEI * sizeof(int));
     MPI_Gather(buffer, WID * chunk_size, MPI_INT, global_buffer, WID * chunk_size, MPI_INT, 0, MPI_COMM_WORLD);
-    write_png_file("maramiro.png", global_buffer);
+    write_png_file("image.png", global_buffer);
     free(global_buffer);
 } else {
     MPI_Gather(buffer, WID * chunk_size, MPI_INT, NULL, 0, MPI_INT, 0, MPI_COMM_WORLD);
